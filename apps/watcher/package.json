@@ -1,6 +1,6 @@
 {
   "name": "@rosen-bridge/watcher-app",
-  "version": "4.4.1",
+  "version": "4.4.2",
   "private": true,
   "repository": {
     "type": "git",
@@ -8,8 +8,9 @@
   },
   "license": "MIT",
   "scripts": {
+    "bootstrap": "turbo build --filter=@rosen-bridge/watcher-app^...",
     "build": "next build",
-    "build:vercel": "cd ../../ && ./build.sh watcher && cd apps/watcher && npm run build",
+    "build:vercel": "npm run bootstrap && npm run build",
     "dev": "next dev",
     "lint": "biome check --write",
     "lint:check": "biome check",
@@ -19,13 +20,13 @@
   },
   "dependencies": {
     "@rosen-bridge/icons": "^3.7.1",
-    "@rosen-bridge/ui-kit": "^5.8.2",
+    "@rosen-bridge/ui-kit": "^5.9.0",
     "@rosen-ui/constants": "^1.1.0",
     "@rosen-ui/swr-helpers": "^0.2.2",
     "@rosen-ui/utils": "^1.0.4",
     "lodash-es": "^4.17.21",
     "moment": "^2.29.4",
-    "next": "^15.5.18",
+    "next": "^16.3.2",
     "react": "^19.2.6",
     "react-apexcharts": "^1.4.0",
     "react-dom": "^19.2.6",

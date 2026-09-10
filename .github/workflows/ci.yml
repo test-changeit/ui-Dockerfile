@@ -1,8 +1,12 @@
 name: CI
 
 on:
-  pull_request:
+  pull_request_target:
     branches: ['master', 'dev']
+
+permissions:
+  contents: read
+  pull-requests: read
 
 concurrency:
   group: ci-${{ github.event.pull_request.number || github.ref }}
@@ -15,10 +19,11 @@ jobs:
 
     timeout-minutes: 20
     steps:
-      - name: Checkout
+      - name: Checkout Target Branch
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Setup Node
         uses: actions/setup-node@v6
